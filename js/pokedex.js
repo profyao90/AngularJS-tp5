@@ -13,3 +13,12 @@ var pokeFactory = function ($resource) {
             'update': {method: 'PUT'},
         });
 };
+pokeApp.factory('PokemApi', ['$resource', pokeFactory]);
+
+pokeApp.factory('sharedService', function () {
+    var Poke = {
+        food: 'Shared service',
+        pokemon: {}
+    };
+    return Poke;
+});
