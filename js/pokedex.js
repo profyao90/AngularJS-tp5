@@ -22,3 +22,35 @@ pokeApp.factory('sharedService', function () {
     };
     return Poke;
 });
+
+pokeApp.controller('researchPokemonCtrl',
+ ['$scope', '$log', '$http', 'PokemApi', 
+ 'sharedService', function ($scope, $log, $http,
+     PokemApi, sharedService) {
+
+    $scope.$log = $log;
+    $scope.firstName ="pokemon0";
+    $scope.lastName = "pokemon1";
+    $scope.pokemons = [];
+    $scope.pokeSelect = 0;
+    $scope.selectedPokeId;
+
+    $scope.appelHttp = function () {
+        $http.get('https://pokeapi.co/api/v2/pokedex/1').
+        then(function(resultat) {
+            $scope.pokemons = resultat.data.pokemon_entries;
+        });
+    }
+
+    //Au chargement
+    $scope.appelHttp();
+
+    $scope.getSelectedPoke = function () {
+        if ($scope.pokeSelect != null) {
+            $scope.selectedPokeId = $scope.pokeSelect;
+            sharedService.pokemon.id = $scope.selectedPokeId;
+            $log.info("selected");
+        }
+    };
+
+}]);
