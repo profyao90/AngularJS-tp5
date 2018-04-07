@@ -1,3 +1,3 @@
-# teaching-jxs-tp5
+# TP_6 PokeAPI
 ## Auteur: YAO_Aubin KOFFI_Williams BAH_Amadou
-TP5 : AngularJS
+TP6 : AngularJS
